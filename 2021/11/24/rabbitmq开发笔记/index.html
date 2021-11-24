@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hello World | Xxd Blog</title>
+  <title>rabbitmq开发笔记 | Xxd Blog</title>
   <meta name="keywords" content="">
-  <meta name="description" content="Hello World | Xxd Blog">
+  <meta name="description" content="rabbitmq开发笔记 | Xxd Blog">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="底层是基于erlang开发名词解释生产者（Producer）：发送消息的应用。消费者（Consumer）：接收消息的应用。队列（Queue）：存储消息的缓存。消息（Message）：由生产者通过RabbitMQ发送给消费者的信息。连接（Connection）：连接RabbitMQ和应用服务器的TCP连接。通道（Channel）：连接里的一个虚拟通道。当你通过消息队列发送或者接收消息时，这个操作都是">
 <meta property="og:type" content="article">
@@ -354,9 +354,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-rabbitmq开发笔记" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Hello World</h1>
+        <h1 class="article-title">rabbitmq开发笔记</h1>
     
     <div class="article-meta">
         
@@ -366,7 +366,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-11-24 15:24:50'>2021-11-24 15:24</time>
+            发布时间 : <time class="date" title='最后更新: 2021-11-24 15:58:22'>2021-11-24 15:53</time>
         
     </div>
     <div class="article-meta">
@@ -388,7 +388,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -404,19 +404,24 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <p>底层是基于erlang开发<br>名词解释<br>生产者（Producer）：发送消息的应用。<br>消费者（Consumer）：接收消息的应用。<br>队列（Queue）：存储消息的缓存。<br>消息（Message）：由生产者通过RabbitMQ发送给消费者的信息。<br>连接（Connection）：连接RabbitMQ和应用服务器的TCP连接。<br>通道（Channel）：连接里的一个虚拟通道。当你通过消息队列发送或者接收消息时，这个操作都是通过通道进行的。<br>交换机（Exchange）：交换机负责从生产者那里接收消息，并根据交换类型分发到对应的消息列队里。要实现消息的接收，一个队列必须到绑定一个交换机。<br>绑定（Binding）：绑定是队列和交换机的一个关联连接。<br>路由键（Routing Key）：路由键是供交换机查看并根据键来决定如何分发消息到列队的一个键。路由键可以说是消息的目的地址。</p>
+<p>RabbitMQ里的消息流程<br>生产者（producer）把消息发送给交换机。当你创建交换机的时候，你需要指定类型。交换机的类型接下来会讲到。<br>交换机（exchange）接收消息并且负责对消息进行路由。根据交换机的类型，消息的多个属性会被使用，例如路由键。<br>绑定（binding）需要从交换机到队列的这种方式来进行创建。在这个例子里，我们可以看到交换机有到两个不同队列的绑定。交换机根据消息的属性来把消息分发到不同的队列上。<br>消息（message）消息会一直留在队列里直到被消费。<br>消费者（consumer）处理消息。</p>
+<p>交换机类型</p>
+<pre><code>         Exchange Type
+</code></pre>
+<p>直接（Direct）：直接交换机通过消息上的路由键直接对消息进行分发。 一对一 完全匹配<br>扇出（Fanout）：一个扇出交换机会将消息发送到所有和它进行绑定的队列上。 群发  广播<br>主题（Topic）：这个交换机会将路由键和绑定上的模式进行通配符匹配。 一对多  规则匹配<br>消息头（Headers）：消息头交换机使用消息头的属性进行消息路由。  x-match设置为any和all</p>
+<p>消息执行<br>delivery-mode有两个值：1表示非持久化，2表示持久化消息<br>delivery-mode=1 代表纯内存队列 性能高 不需要磁盘io<br>delivery-mode=2 代表支持磁盘存储队列 持久化 安全性高  日志追加方式 顺序io<br>消息持久化</p>
+<ol>
+<li>exchange持久化,在声明时指定durable =&gt; true<br>channel.ExchangeDeclare(ExchangeName, “direct”, durable: true, autoDelete: false, arguments: null);//声明消息队列，且为可持久化的</li>
+<li>queue持久化,在声明时指定durable =&gt; true<br>channel.QueueDeclare(QueueName, durable: true, exclusive: false, autoDelete: false, arguments: null);//声明消息队列，且为可持久化的</li>
+<li>消息持久化,在投递时指定delivery_mode =&gt; 2(1是非持久化).<br>channel.basicPublish(“”, queueName, MessageProperties.PERSISTENT_TEXT_PLAIN, msg.getBytes());  </li>
+</ol>
+<p>durable持久化<br>autoDelete自动删除<br>exclusive排他性  Connection</p>
+<p>使用ProtoBuf序列化消息<br>支持confirm确认机制  </p>
+<p>RabbitMQ安装<br>1.首先安装erlang  再安装rabbitMq<br>2.一般在安装完成之后 服务会自动运行  会生成ERLANG_HOME环境变量<br>3.进入sbin目录下  检查rabbitMq运行状态 rabbitmqctl status<br>4.运行  rabbitmqctl stop 命令来停止服务<br>5.运行 rabbitmq-server  -detached命令来重启服务并后台运行<br>6.地址  <a target="_blank" rel="noopener" href="http://127.0.0.1:15672/">http://127.0.0.1:15672/</a>  默认账号密码  guest  guest<br>7.日志在  C:/Users/Administrator/AppData/Roaming/RabbitMQ/log/文件夹下</p>
+<p>主题交换机  通配符<br>*代表一个单词<br>#代表0个或多个单词<br>自动删除无人消费的消息<br>设置队列的消息的TTL<br>指定消息的TTL<br>死信交换机DLX Dead Letter Exchange<br>死信队列Dead Letter Queue<br>消息过期<br>Reject/Nack并且 requeue == false<br>队列达到最大长度  先入列的消息会变成死信队列<br>过期时间设置和优先级<br>通过队列属性设置消息的过期时间x-message-ttl和优先级x-max-priority<br>对每条消息进行设置.expiration(“10000”)和.priority(5)<br>延迟队列<br>延迟队列插件<br>TTL+DLX<br>流量控制<br>服务端  Flow Control内存  ram  disc   磁盘空间超过40%  或者大于1G<br>消费端   prefetch count（channel.basicQos(3)）预取的数量</p>
+<p>1、保证消息发送到交换机上<br>事务Transaction 模式     阻塞式<br>channel.txSelect()   –&gt;  channel.txCommit()   –&gt;  channel.txRollback()<br>Confirm模式   异步<br>channel.confirmSelect()  –&gt;  Basic.Ack<br>2、路由保证<br>ReturnListener<br>备份交换机<br>3、消息的存储<br>队列持久化<br>交换机持久化<br>消息持久化<br>4、消费者确认<br>channel.basicAck() 手工应答<br>channel.basicReject() 单条拒绝<br>channel.basicNack() 批量拒绝<br>5、其他<br>消费者回调   消息落库  消费状态  待发送 -》 发送完成 -》 待消费 -》消费完成<br>补偿机制  消息重发或者确认<br>消息幂等性<br>消息顺序性  单对单 保证顺序<br>自动ACK消息从队列中删除  -&gt;   发送给消费者之后<br>高可用架构<br>集群  只能在lan网上部署，不可以在wan网  广义网需要插件federation或shovel<br>通信基础<br>erlang.cookie、hosts<br>磁盘节点与内存结点<br>必须存在一个及以上的Disc磁盘节点，任意个数的RAM内存结点<br>配置步骤<br>镜像队列<br>HA方案<br>注意：<br>生产者先处理业务再发送消息<br>消费者创建交换机、队列、绑定关系<br>运维监控  zabbix<br>confirmCallback机制<br>只有所有的broker收到信息 会执行confirmCallback<br>returnsCallback 机制<br>如果消息未能投递到目标queue将调用returnsCallback</p>
+<p>动态创建和监听（此种监听 不可以指定某一队列有n个消费者 只可以指定n个消费者去消费绑定的所有监听队列）<br>使用rabbitAdmin创建交换机、队列以及绑定关系<br>使用SimpleMessageListenerContainer添加需要监听的队列以及指定监听器<br>实现ChannelAwareMessageListener的onMessage方法进行监听</p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
